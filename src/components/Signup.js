@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
 
-const Home = ({ navigation }) => {
+const Signup = ({ navigation }) => {
   return (
     <View>
-      <Text>{"Home component"}</Text>
+      <Text>{"Signup component"}</Text>
     </View>
   );
 };
 
-export default Home;
+export default Signup;
