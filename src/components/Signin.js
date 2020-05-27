@@ -14,8 +14,8 @@ const Signin = ({ navigation }) => {
   return (
     <View>
       <Text>{"Signin component"}</Text>
-      <TextInput style={styles.textInput} placeholder={"Username"} />
-      <TextInput style={styles.textInput} secureTextEntry placeholder={"Password"} />
+      <TextInput style={styles.textInput} onChangeText={(text) => setUsername(text)} placeholder={"Username"} />
+      <TextInput style={styles.textInput} onChangeText={(text) => setPassword(text)} secureTextEntry placeholder={"Password"} />
     </View>
   );
 };
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     borderColor: "grey",
     borderWidth: 1,
     borderRadius: 5,
+    margin: 10,
     width: Dimensions.get("window").width * 0.8
   }
 });
