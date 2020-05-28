@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
 
 
-const Signin = ({ navigation }) => {
+const Signin = () => {
 
   // To be only used in root level, not inside any function or loop
   const [username, setUsername] = useState("");
@@ -12,8 +12,8 @@ const Signin = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Text>{"Signin component"}</Text>
+    <View style={styles.container}>
+      <Text style={styles.textStyle}>{"Signin component"}</Text>
       <TextInput style={styles.textInput} onChangeText={(text) => setUsername(text)} placeholder={"Username"} />
       <TextInput style={styles.textInput} onChangeText={(text) => setPassword(text)} secureTextEntry placeholder={"Password"} />
     </View>
@@ -21,6 +21,14 @@ const Signin = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignSelf: "center"
+  },
+  textStyle: {
+    margin: 10,
+    textAlign: "center"
+  },
   textInput: {
     borderColor: "grey",
     borderWidth: 1,
