@@ -9,6 +9,7 @@ const Signin = ({ navigation }) => {
   const [password, setPassword] = useState("");
 
   const loginClicked = () => {
+    navigation.navigate("Home");
   };
 
   return (
@@ -16,6 +17,9 @@ const Signin = ({ navigation }) => {
       <Text style={styles.textStyle}>{"Signin component"}</Text>
       <TextInput style={styles.textInput} onChangeText={(text) => setUsername(text)} placeholder={"Username"} />
       <TextInput style={styles.textInput} onChangeText={(text) => setPassword(text)} secureTextEntry placeholder={"Password"} />
+      <TouchableOpacity style={styles.buttonStyle} onPress={() => loginClicked()}>
+        <Text style={styles.buttonText}>{"Login"}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -35,6 +39,15 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     margin: 10,
     width: Dimensions.get("window").width * 0.8
+  },
+  buttonStyle: {
+    margin: 5,
+    alignSelf: "center",
+    backgroundColor: "cyan"
+  },
+  buttonText: {
+    margin: 10,
+    textAlign: "center"
   }
 });
 
