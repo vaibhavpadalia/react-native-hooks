@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
 
 
-const Signin = () => {
+const Signin = ({ navigation }) => {
 
   // To be only used in root level, not inside any function or loop
   const [username, setUsername] = useState("");
