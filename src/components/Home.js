@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import { callRemoteMethod } from '../utilities/WebServiceHandler';
+import { callRemoteMethodAsync, callRemoteMethod } from '../utilities/WebServiceHandler';
 import { URL } from "../utilities/Constants";
 
 const Home = ({ navigation }) => {
 
   const [locationDetails, setLocationDetails] = useState({});
+  const [personDetails, setPersonDetails] = useState({});
   const [loader, setLoader] = useState(false);
 
   // This function works like the lifecycle method componentDidMount with second argument as []
@@ -18,7 +19,7 @@ const Home = ({ navigation }) => {
     // Solution: Create an scoped async function in the hook or use IIFE
     const callAPI = async () => {
       try {
-        let response = await callRemoteMethod(URL.GET_LOCATION, "GET", setLoader);
+        let response = await callRemoteMethodAsync(URL.GET_LOCATION, "GET", setLoader);
         setLocationDetails(response);
       } catch (e) {
         alert("Error occurred:", e.message);
@@ -27,9 +28,21 @@ const Home = ({ navigation }) => {
     callAPI();
   }, []);
 
+  // Function that is called after SWAPI People API is executed
+  const apiCallback = (res) => {
+    setPersonDetails(res);
+  };
+
+  // In this function we pass a callback function after API gives success response
+  useEffect(() => {
+    callRemoteMethod(URL.SWAPI_PEOPLE, "GET", apiCallback);
+  }, []);
+
   return (
     <View>
       <Text>{"Home component"}</Text>
+      <Text>{`Name: ${personDetails.name}`}</Text>
+      <Text>{`Country: ${locationDetails?.country}`}</Text>
     </View>
   );
 };
