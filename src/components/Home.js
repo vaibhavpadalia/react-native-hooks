@@ -7,6 +7,7 @@ const Home = ({ navigation }) => {
 
   const [locationDetails, setLocationDetails] = useState({});
   const [personDetails, setPersonDetails] = useState({});
+  const [peopleList, setPeopleList] = useState({});
   const [loader, setLoader] = useState(false);
 
   // This function works like the lifecycle method componentDidMount with second argument as []
@@ -37,6 +38,14 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     callRemoteMethod(URL.SWAPI_PEOPLE, "GET", apiCallback);
   }, []);
+
+  const setResponse = (res) => {
+    setPeopleList(res);
+  };
+
+  useEffect(() => {
+    callRemoteMethod(URL.PEOPLE_LIST, "GET", setResponse);
+  });
 
   return (
     <View>
