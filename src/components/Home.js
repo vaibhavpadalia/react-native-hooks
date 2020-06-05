@@ -40,7 +40,7 @@ const Home = ({ navigation }) => {
   }, []);
 
   const setResponse = (res) => {
-    setPeopleList(res);
+    setPeopleList(res.results);
   };
 
   useEffect(() => {
