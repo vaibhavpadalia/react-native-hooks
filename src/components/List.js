@@ -8,7 +8,10 @@ const List = (props) => {
       keyExtractor={(value, index) => index.toString()}
       renderItem={(item, index) => {
         <View>
-          <Text>{item}</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text>{"Name: "}</Text>
+            <Text>{item}</Text>
+          </View>
         </View>;
       }}
     />
