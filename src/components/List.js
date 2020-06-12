@@ -9,8 +9,7 @@ const List = (props) => {
       renderItem={(item, index) => {
         <View>
           <View style={{ flexDirection: "row" }}>
-            <Text>{"Name: "}</Text>
-            <Text>{item}</Text>
+            <Text>{`Name: ${name}`}</Text>
           </View>
         </View>;
       }}
