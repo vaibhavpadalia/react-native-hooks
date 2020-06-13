@@ -40,17 +40,16 @@ const Home = ({ navigation }) => {
     callRemoteMethod(URL.SWAPI_PEOPLE, "GET", apiCallback);
   }, []);
 
+  useEffect(() => {
+    callRemoteMethod(URL.PEOPLE_LIST, "GET", setResponse);
+  }, []);
+
   const setResponse = (res) => {
     setPeopleList(res.results);
   };
 
-  useEffect(() => {
-    console.warn("Test");
-    callRemoteMethod(URL.PEOPLE_LIST, "GET", setResponse);
-  }, []);
-
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Text>{"Home component"}</Text>
       <Text>{`Name: ${personDetails.name}`}</Text>
       <Text>{`Country: ${locationDetails?.country}`}</Text>
