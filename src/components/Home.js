@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { callRemoteMethodAsync, callRemoteMethod } from '../utilities/WebServiceHandler';
 import { URL } from "../utilities/Constants";
+import List from './List';
 
 const Home = ({ navigation }) => {
 
@@ -44,14 +45,16 @@ const Home = ({ navigation }) => {
   };
 
   useEffect(() => {
+    console.warn("Test");
     callRemoteMethod(URL.PEOPLE_LIST, "GET", setResponse);
-  });
+  }, []);
 
   return (
     <View>
       <Text>{"Home component"}</Text>
       <Text>{`Name: ${personDetails.name}`}</Text>
       <Text>{`Country: ${locationDetails?.country}`}</Text>
+      <List />
     </View>
   );
 };
