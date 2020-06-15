@@ -8,7 +8,7 @@ const Home = ({ navigation }) => {
 
   const [locationDetails, setLocationDetails] = useState({});
   const [personDetails, setPersonDetails] = useState({});
-  const [peopleList, setPeopleList] = useState({});
+  const [peopleList, setPeopleList] = useState([]);
   const [loader, setLoader] = useState(false);
 
   // This function works like the lifecycle method componentDidMount with second argument as []
@@ -44,7 +44,7 @@ const Home = ({ navigation }) => {
     callRemoteMethod(URL.PEOPLE_LIST, "GET", setResponse);
   }, []);
 
-  const setResponse = (res) => {
+  const setResponse = async (res) => {
     setPeopleList(res.results);
   };
 
@@ -53,7 +53,7 @@ const Home = ({ navigation }) => {
       <Text>{"Home component"}</Text>
       <Text>{`Name: ${personDetails.name}`}</Text>
       <Text>{`Country: ${locationDetails?.country}`}</Text>
-      <List />
+      <List peopleList={peopleList} />
     </View>
   );
 };
