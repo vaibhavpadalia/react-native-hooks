@@ -14,7 +14,7 @@ const List = (props) => {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item, index }) => {
           return (
-            <View>
+            <View style={{ margin: 10 }}>
               <Text>{`Name: ${item.name}`}</Text>
               <Text>{`Gender: ${item.gender}`}</Text>
               <Text>{`Birth Year: ${item.birth_year}`}</Text>
