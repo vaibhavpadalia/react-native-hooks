@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, View, Text } from "react-native";
+import { FlatList, View, Text, StyleSheet } from "react-native";
 
 const List = (props) => {
 
@@ -14,7 +14,7 @@ const List = (props) => {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item, index }) => {
           return (
-            <View style={{ margin: 10, backgroundColor: "#F0F0F0" }}>
+            <View style={styles.cardView}>
               <Text>{`Name: ${item.name}`}</Text>
               <Text>{`Gender: ${item.gender}`}</Text>
               <Text>{`Birth Year: ${item.birth_year}`}</Text>
@@ -24,5 +24,12 @@ const List = (props) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  cardView: {
+    margin: 10,
+    backgroundColor: "#F0F0F0"
+  }
+});
 
 export default List;
