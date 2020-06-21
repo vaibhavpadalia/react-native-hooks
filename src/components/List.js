@@ -5,9 +5,6 @@ const List = (props) => {
 
   const { peopleList } = props;
 
-  useEffect(() => {
-  }, []);
-
   return (
     <View style={{ flex: 1 }}>
       <Text>{"People List"}</Text>
