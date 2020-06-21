@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList, View, Text, StyleSheet } from "react-native";
 
 const List = (props) => {
 
   const { peopleList } = props;
+
+  useEffect(() => {
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>

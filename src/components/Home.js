@@ -50,7 +50,6 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Text>{"Home component"}</Text>
       <Text>{`Name: ${personDetails.name}`}</Text>
       <Text>{`Country: ${locationDetails?.country}`}</Text>
       <List peopleList={peopleList} />
