@@ -14,3 +14,24 @@ useMemo() & useCallback() are used for the following reasons:
 1. Referential equality
 2. Computationally expensive calculations
 
+Referential Equality can be explained with the following examples:
+```
+true === true // true
+false === false // true
+1 === 1 // true
+'a' === 'a' // true
+
+{} === {} // false
+[] === [] // false
+() => {} === () => {} // false
+
+const z = {}
+z === z // true
+```
+
+What is the difference between useMemo() and useCallback()
+useCallback and useMemo both expect a function and an array of dependencies. The difference is that useCallback returns its function when the dependencies change while useMemo calls its function and returns the result.
+useCallback returns its function uncalled so you can call it later, while useMemo calls its function and returns the result.
+They are a replacement for shouldComponentUpdate from React.PureComponent because the dependencies of these hooks get checked for referential equality.
+
+To know more about when to use useMemo() or useCallback() refer [this](https://kentcdodds.com/blog/usememo-and-usecallback) article.
