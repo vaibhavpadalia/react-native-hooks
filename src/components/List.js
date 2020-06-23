@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, View, Text, StyleSheet } from "react-native";
+import { FlatList, View, Text, StyleSheet, TextInput } from "react-native";
 
 const List = (props) => {
-
   const { peopleList } = props;
+  const [searchText, setSearchText] = useState("");
 
   return (
     <View style={{ flex: 1 }}>
       <Text>{"People List"}</Text>
+      <TextInput onChangeText={(text) => setSearchText(text)} />
       <FlatList
         style={{ flex: 1 }}
         data={peopleList}
