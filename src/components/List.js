@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FlatList, View, Text, StyleSheet, TextInput } from "react-native";
 
 const List = (props) => {
   const { peopleList } = props;
   const [searchText, setSearchText] = useState("");
+  const inputRef = useRef();
 
   return (
     <View style={{ flex: 1 }}>

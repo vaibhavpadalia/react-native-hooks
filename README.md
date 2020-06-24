@@ -29,8 +29,9 @@ const z = {}
 z === z // true
 ```
 
-What is the difference between useMemo() and useCallback()
-useCallback and useMemo both expect a function and an array of dependencies. The difference is that useCallback returns its function when the dependencies change while useMemo calls its function and returns the result.
+Q. What is the difference between useMemo() and useCallback() ?
+
+A. useCallback and useMemo both expect a function and an array of dependencies. The difference is that useCallback returns its function when the dependencies change while useMemo calls its function and returns the result.
 useCallback returns its function uncalled so you can call it later, while useMemo calls its function and returns the result.
 They are a replacement for shouldComponentUpdate from React.PureComponent because the dependencies of these hooks get checked for referential equality.
 
