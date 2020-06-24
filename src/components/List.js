@@ -6,10 +6,14 @@ const List = (props) => {
   const [searchText, setSearchText] = useState("");
   const inputRef = useRef();
 
+  const searchTextChange = (text) => {
+    setSearchText(text);
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <Text>{"People List"}</Text>
-      <TextInput onChangeText={(text) => setSearchText(text)} />
+      <TextInput onChangeText={(text) => searchTextChange(text)} />
       <FlatList
         style={{ flex: 1 }}
         data={peopleList}
