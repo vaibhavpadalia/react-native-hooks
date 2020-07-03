@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useReducer } from 'react';
 import { FlatList, View, Text, StyleSheet, TextInput } from "react-native";
 
 const List = (props) => {
@@ -7,7 +7,10 @@ const List = (props) => {
   const inputRef = useRef();
 
   const searchTextChange = (text) => {
-    setSearchText(text);
+    if (text.length > 7) {
+    } else {
+      setSearchText(text);
+    }
   };
 
   return (
