@@ -36,3 +36,6 @@ useCallback returns its function uncalled so you can call it later, while useMem
 They are a replacement for shouldComponentUpdate from React.PureComponent because the dependencies of these hooks get checked for referential equality.
 
 To know more about when to use useMemo() or useCallback() refer [this](https://kentcdodds.com/blog/usememo-and-usecallback) article.
+
+
+Q. What is the difference between useReducer() and useState() ?
