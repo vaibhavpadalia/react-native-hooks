@@ -41,3 +41,4 @@ To know more about when to use useMemo() or useCallback() refer [this](https://k
 Q. What is the difference between useReducer() and useState() ?
 
 A. useReducer() is generally used when we have some complex state logic where next state depends on the previous one.
+useReducer() takes reducer function and initial state as arguments and returns the state and dispatch method.
