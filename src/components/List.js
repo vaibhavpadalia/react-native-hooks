@@ -13,7 +13,7 @@ const List = props => {
   return (
     <View style={{flex: 1}}>
       <Text>{'People List'}</Text>
-      <TextInput onChangeText={text => searchTextChange(text)} />
+      <TextInput ref={inputRef} onChangeText={text => searchTextChange(text)} />
       <FlatList
         style={{flex: 1}}
         data={peopleList}
