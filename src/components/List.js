@@ -5,9 +5,14 @@ const List = props => {
   const {peopleList} = props;
   const [searchText, setSearchText] = useState('');
   const inputRef = useRef();
+  const [] = useReducer();
 
   const searchTextChange = text => {
-    setSearchText(text);
+    if (text.length <= 6) {
+      setSearchText(text);
+    } else {
+      inputRef.current.blur();
+    }
   };
 
   return (
