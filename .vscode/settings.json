@@ -1,11 +1,8 @@
 {
-  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-  "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
-  "eslint.format.enable": true,
+  "editor.formatOnType": true,
   "eslint.alwaysShowStatus": true,
-  "prettier.printWidth": 140,
-  "prettier.jsxBracketSameLine": true
+  "prettier.printWidth": 120,
+  "prettier.jsxBracketSameLine": true,
+  "editor.wordWrapColumn": 120,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true
 }

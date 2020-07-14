@@ -1,20 +1,20 @@
-import React, {useState, useEffect, useRef, useReducer} from 'react';
-import {FlatList, View, Text, StyleSheet, TextInput} from 'react-native';
+import React, { useState, useEffect, useRef, useReducer } from "react";
+import { FlatList, View, Text, StyleSheet, TextInput } from "react-native";
 
-const nameList = (currentState, action) => {
+const nameListReducer = (currentState, action) => {
   switch (action.type) {
-    case 'SET':
+    case "SET":
       return action.data;
-    case 'ADD':
+    case "ADD":
       return [...currentState, action.data];
   }
 };
 
 const List = props => {
-  const {peopleList} = props;
-  const [searchText, setSearchText] = useState('');
+  const { peopleList } = props;
+  const [searchText, setSearchText] = useState("");
   const inputRef = useRef();
-  const [nameList, dispatch] = useReducer(nameList, []);
+  const [nameList, dispatch] = useReducer(nameListReducer, []);
 
   const searchTextChange = text => {
     if (text.length <= 6) {
@@ -25,14 +25,14 @@ const List = props => {
   };
 
   return (
-    <View style={{flex: 1}}>
-      <Text>{'People List'}</Text>
-      <TextInput ref={inputRef} onChangeText={text => searchTextChange(text)} />
+    <View style={styles.container}>
+      <Text>{"People List"}</Text>
+      <TextInput ref={inputRef} value={searchText} onChangeText={text => searchTextChange(text)} />
       <FlatList
-        style={{flex: 1}}
+        style={styles.container}
         data={peopleList}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({item, index}) => {
+        renderItem={({ item, index }) => {
           return (
             <View style={styles.cardView}>
               <Text>{`Name: ${item.name}`}</Text>
@@ -47,10 +47,13 @@ const List = props => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   cardView: {
     margin: 10,
-    backgroundColor: '#F0F0F0',
-  },
+    backgroundColor: "#F0F0F0"
+  }
 });
 
 export default List;
