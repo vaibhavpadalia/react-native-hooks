@@ -6,6 +6,7 @@ This POC covers the following hooks:
 3. useRef()
 4. useCallback()
 5. useMemo()
+6. useReducer()
 
 
 `Note: useMemo() and useCallback() are used for performance optimization. However, performance optimizations are not free. They always come with a cost but do not always come with a benefit to offset that cost.`
@@ -29,7 +30,7 @@ const z = {}
 z === z // true
 ```
 
-Q. What is the difference between useMemo() and useCallback() ?
+<b>Q. What is the difference between useMemo() and useCallback() ?</b>
 
 A. useCallback and useMemo both expect a function and an array of dependencies. The difference is that useCallback returns its function when the dependencies change while useMemo calls its function and returns the result.
 useCallback returns its function uncalled so you can call it later, while useMemo calls its function and returns the result.
@@ -37,8 +38,8 @@ They are a replacement for shouldComponentUpdate from React.PureComponent becaus
 
 To know more about when to use useMemo() or useCallback() refer [this](https://kentcdodds.com/blog/usememo-and-usecallback) article.
 
-
-Q. What is the difference between useReducer() and useState() ?
+<br/>
+<b>Q. What is the difference between useReducer() and useState() ?</b>
 
 A. useReducer() is generally used when we have some complex state logic where next state depends on the previous one.
 useReducer() takes reducer function and initial state as arguments and returns the state and dispatch method.
