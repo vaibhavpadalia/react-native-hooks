@@ -27,7 +27,12 @@ const List = props => {
   return (
     <View style={styles.container}>
       <Text>{"People List"}</Text>
-      <TextInput ref={inputRef} value={searchText} onChangeText={text => searchTextChange(text)} />
+      <TextInput
+        ref={inputRef}
+        style={styles.textInput}
+        value={searchText}
+        onChangeText={text => searchTextChange(text)}
+      />
       <FlatList
         style={styles.container}
         data={peopleList}
@@ -53,6 +58,10 @@ const styles = StyleSheet.create({
   cardView: {
     margin: 10,
     backgroundColor: "#F0F0F0"
+  },
+  textInput: {
+    borderBottomWidth: 1,
+    borderBottomColor: "grey"
   }
 });
 
