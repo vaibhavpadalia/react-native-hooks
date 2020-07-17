@@ -1,20 +1,10 @@
 import React, { useState, useEffect, useRef, useReducer } from "react";
 import { FlatList, View, Text, StyleSheet, TextInput } from "react-native";
 
-const nameListReducer = (currentState, action) => {
-  switch (action.type) {
-    case "SET":
-      return action.data;
-    case "ADD":
-      return [...currentState, action.data];
-  }
-};
-
 const List = props => {
   const { peopleList } = props;
   const [searchText, setSearchText] = useState("");
   const inputRef = useRef();
-  const [nameList, dispatch] = useReducer(nameListReducer, []);
 
   const searchTextChange = text => {
     if (text.length <= 6) {
