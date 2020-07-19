@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import { callRemoteMethodAsync, callRemoteMethod } from '../utilities/WebServiceHandler';
+import { callRemoteMethodAsync, callRemoteMethod } from "../utilities/WebServiceHandler";
 import { URL } from "../utilities/Constants";
-import List from './List';
+import List from "./List";
 
 const Home = ({ navigation }) => {
-
   const [locationDetails, setLocationDetails] = useState({});
   const [personDetails, setPersonDetails] = useState({});
   const [peopleList, setPeopleList] = useState([]);
@@ -31,7 +30,7 @@ const Home = ({ navigation }) => {
   }, []);
 
   // Function that is called after SWAPI People API is executed
-  const apiCallback = (res) => {
+  const apiCallback = res => {
     setPersonDetails(res);
   };
 
@@ -44,7 +43,7 @@ const Home = ({ navigation }) => {
     callRemoteMethod(URL.PEOPLE_LIST, "GET", setResponse);
   }, []);
 
-  const setResponse = async (res) => {
+  const setResponse = async res => {
     setPeopleList(res.results);
   };
 
@@ -52,6 +51,9 @@ const Home = ({ navigation }) => {
     <View style={{ flex: 1 }}>
       <Text>{`Name: ${personDetails.name}`}</Text>
       <Text>{`Country: ${locationDetails?.country}`}</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Insults")}>
+        <Text>{"Go to Insults"}</Text>
+      </TouchableOpacity>
       <List peopleList={peopleList} />
     </View>
   );
