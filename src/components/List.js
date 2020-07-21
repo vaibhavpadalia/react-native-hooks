@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useReducer } from "react";
+import React, { useState, useRef } from "react";
 import { FlatList, View, Text, StyleSheet, TextInput } from "react-native";
 
 const List = props => {
@@ -50,8 +50,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#F0F0F0"
   },
   textInput: {
+    marginTop: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "grey"
+    borderBottomColor: "grey",
+    backgroundColor: "#EAEAEA"
   }
 });
 
