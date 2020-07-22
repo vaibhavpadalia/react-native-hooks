@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     margin: 10,
+    padding: 10,
     width: Dimensions.get("window").width * 0.8
   },
   buttonStyle: {
