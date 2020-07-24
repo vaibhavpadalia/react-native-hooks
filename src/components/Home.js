@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { callRemoteMethodAsync, callRemoteMethod } from "../utilities/WebServiceHandler";
 import { URL } from "../utilities/Constants";
 import List from "./List";

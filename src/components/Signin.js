@@ -8,8 +8,13 @@ const Signin = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginClicked = () => {
-    navigation.navigate("Home");
+  const navigateTo = (screen) => {
+    switch (screen) {
+      case "Home": navigation.navigate("Home");
+        break;
+      case "Signup": navigation.navigate("Signup");
+        break;
+    }
   };
 
   return (
@@ -17,8 +22,11 @@ const Signin = ({ navigation }) => {
       <Text style={styles.textStyle}>{"Signin component"}</Text>
       <TextInput style={styles.textInput} onChangeText={(text) => setUsername(text)} placeholder={"Username"} />
       <TextInput style={styles.textInput} onChangeText={(text) => setPassword(text)} secureTextEntry placeholder={"Password"} />
-      <TouchableOpacity style={styles.buttonStyle} onPress={() => loginClicked()}>
+      <TouchableOpacity style={styles.buttonStyle} onPress={() => navigateTo("Home")}>
         <Text style={styles.buttonText}>{"Login"}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonStyle} onPress={() => navigateTo("Signup")}>
+        <Text style={styles.buttonText}>{"Signup"}</Text>
       </TouchableOpacity>
     </View>
   );

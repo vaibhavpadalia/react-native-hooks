@@ -1,9 +1,12 @@
 import React from 'react';
+import { SafeAreaView } from "react-native";
 import Routes from './src/routes/routes';
 
 const App = () => {
   return (
+    <SafeAreaView style={{ flex: 1 }}>
       <Routes />
+    </SafeAreaView>
   );
 };
 
