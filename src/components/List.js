@@ -16,7 +16,7 @@ const List = props => {
 
   return (
     <View style={styles.container}>
-      <Text>{"People List"}</Text>
+      <Text style={styles.peopleListText}>{"People List"}</Text>
       <TextInput
         ref={inputRef}
         style={styles.textInput}
@@ -44,6 +44,10 @@ const List = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  peopleListText: {
+    margin: 10,
+    marginBottom: 5
   },
   cardView: {
     margin: 10,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { callRemoteMethodAsync, callRemoteMethod } from "../utilities/WebServiceHandler";
 import { URL } from "../utilities/Constants";
 import List from "./List";
@@ -49,14 +49,28 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
+      <View style={{ margin: 10 }}>
       <Text>{`Name: ${personDetails.name}`}</Text>
-      <Text>{`Country: ${locationDetails?.country}`}</Text>
-      <TouchableOpacity onPress={() => navigation.navigate("Insults")}>
-        <Text>{"Go to Insults"}</Text>
+        <Text>{`Country: ${ locationDetails?.country }`}</Text>
+        </View>
+      <TouchableOpacity style={styles.buttonStyle} onPress={() => navigation.navigate("Insults")}>
+        <Text style={styles.buttonText}>{"Go to Insults"}</Text>
       </TouchableOpacity>
       <List peopleList={peopleList} />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  buttonStyle: {
+    margin: 5,
+    alignSelf: "center",
+    backgroundColor: "cyan"
+  },
+  buttonText: {
+    margin: 10,
+    textAlign: "center"
+  }
+})
 
 export default Home;
