@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet } from "react-native";
 import { callRemoteMethod } from "../utilities/WebServiceHandler";
 import { URL } from "../utilities/Constants";
@@ -9,22 +9,37 @@ const insultListReducer = (currentState, action) => {
       return [action.data];
     case "ADD":
       return [...currentState, action.data];
+    case "DELETE":
+      return currentState.filter(item => item.insult != action.data)
   }
 };
 
 const Insults = ({ navigation }) => {
+  const [type, setType]= useState("set")
   const [insultList, dispatch] = useReducer(insultListReducer, []);
 
-  useEffect(() => {
+  getInsult = () => {
     callRemoteMethod(URL.INSULT_LIST, "GET", apiCallback);
+  }
+
+  useEffect(() => {
+    getInsult()
   }, []);
 
   // Function that is called after Insult API is executed
   const apiCallback = res => {
-    dispatch({ type: "SET", data: res.insult });
+    switch (type) {
+      case "set": dispatch({ type: "SET", data: res.insult });
+        break;
+      case "add": dispatch({ type: "ADD", data: res.insult });
+        break;
+      case "delete": dispatch({ type: "DELETE", data: res.insult })
+    }
+    
   };  
 
   return (
+    <View style={styles.container} >
       <FlatList
         style={styles.container}
         data={insultList}
@@ -37,6 +52,10 @@ const Insults = ({ navigation }) => {
           );
         }}
       />
+      <TouchableOpacity>
+        <Text>{"Add insult"}</Text>
+      </TouchableOpacity>
+      </View>
   );
 };
 
