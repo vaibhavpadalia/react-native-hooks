@@ -43,7 +43,7 @@ const Home = ({ navigation }) => {
     callRemoteMethod(URL.PEOPLE_LIST, "GET", setResponse);
   }, []);
 
-  const setResponse = async res => {
+  const setResponse = res => {
     setPeopleList(res.results);
   };
 

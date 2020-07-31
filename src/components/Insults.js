@@ -2,40 +2,52 @@ import React, { useEffect, useReducer, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet } from "react-native";
 import { callRemoteMethod } from "../utilities/WebServiceHandler";
 import { URL } from "../utilities/Constants";
+import useAsyncState from "../customHooks/useAsyncState";
 
 const insultListReducer = (currentState, action) => {
   switch (action.type) {
     case "SET":
       return [action.data];
     case "ADD":
+      console.warn(action.data)
       return [...currentState, action.data];
     case "DELETE":
-      return currentState.filter(item => item.insult != action.data)
+      return currentState.filter(item => item.insult != action.data);
+    default: throw Error("Wrong action type for reducer")
   }
 };
 
 const Insults = ({ navigation }) => {
-  const [type, setType]= useState("set")
+  const [actionType, setActionType] = useState("set");
+  const [count, setCount] = useState(0);
   const [insultList, dispatch] = useReducer(insultListReducer, []);
 
-  getInsult = () => {
+  const getInsult = () => {
     callRemoteMethod(URL.INSULT_LIST, "GET", apiCallback);
   }
 
+  const addInsult = () => {
+    setCount((prevState) => prevState + 1);
+    setActionType("add");
+  }
+
+  const deleteInsult = (insult) => {
+    dispatch({ type:"delete", data: insult })
+  }
+
   useEffect(() => {
-    getInsult()
-  }, []);
+    getInsult();
+  },[count])
 
   // Function that is called after Insult API is executed
   const apiCallback = res => {
-    switch (type) {
+    switch (actionType) {
       case "set": dispatch({ type: "SET", data: res.insult });
         break;
       case "add": dispatch({ type: "ADD", data: res.insult });
         break;
-      case "delete": dispatch({ type: "DELETE", data: res.insult })
+      default: throw Error("Wrong option")
     }
-    
   };  
 
   return (
@@ -47,13 +59,16 @@ const Insults = ({ navigation }) => {
         renderItem={({ item, index }) => {
           return (
             <View style={styles.cardView}>
-              <Text>{`${index+1}: ${item}`}</Text>
+              <Text>{`${ index + 1 }: ${ item }`}</Text>
+              <TouchableOpacity style={styles.deleteButtonStyle}>
+                <Text style={styles.buttonText}>{"Delete insult"}</Text>
+              </TouchableOpacity>
             </View>
           );
         }}
       />
-      <TouchableOpacity>
-        <Text>{"Add insult"}</Text>
+      <TouchableOpacity style={styles.buttonStyle} onPress={() => addInsult()}>
+        <Text style={styles.buttonText}>{"Add insult"}</Text>
       </TouchableOpacity>
       </View>
   );
@@ -71,6 +86,24 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor: "#F0F0F0"
   },
+  buttonStyle: {
+    margin: 5,
+    alignSelf: "center",
+    backgroundColor: "cyan"
+  },
+  buttonText: {
+    margin: 10,
+    textAlign: "center"
+  },
+  deleteButtonStyle: {
+    margin: 5,
+    alignSelf: "flex-end",
+    backgroundColor: "red"
+  },
+  deleteButtonText: {
+    margin: 5,
+    textAlign: "center"
+  }
 });
 
 export default Insults;
