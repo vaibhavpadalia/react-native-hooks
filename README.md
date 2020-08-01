@@ -7,6 +7,7 @@ This POC covers the following hooks:
 4. useCallback()
 5. useMemo()
 6. useReducer()
+7. useContext()
 
 
 `Note: useMemo() and useCallback() are used for performance optimization. However, performance optimizations are not free. They always come with a cost but do not always come with a benefit to offset that cost.`
