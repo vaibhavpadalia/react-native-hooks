@@ -11,7 +11,7 @@ const insultListReducer = (currentState, action) => {
     case "ADD":
       return [...currentState, action.data];
     case "DELETE":
-      return currentState.filter(item => item != action.data);
+      return currentState.filter((item, index) => index != action.data);
     default: throw Error("Wrong action type for reducer")
   }
 };
@@ -30,8 +30,8 @@ const Insults = ({ navigation }) => {
     setActionType("add");
   }
 
-  const deleteInsult = (insult) => {
-    dispatch({ type:"DELETE", data: insult })
+  const deleteInsult = (index) => {
+    dispatch({ type:"DELETE", data: index })
   }
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const Insults = ({ navigation }) => {
           return (
             <View style={styles.cardView}>
               <Text>{`${ index + 1 }: ${ item }`}</Text>
-              <TouchableOpacity style={styles.deleteButtonStyle} onPress={() => deleteInsult(item)}>
+              <TouchableOpacity style={styles.deleteButtonStyle} onPress={() => deleteInsult(index)}>
                 <Text style={styles.buttonText}>{"Delete insult"}</Text>
               </TouchableOpacity>
             </View>
