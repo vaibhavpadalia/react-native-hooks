@@ -44,3 +44,4 @@ To know more about when to use useMemo() or useCallback() refer [this](https://k
 
 A. useReducer() is generally used when we have some complex state logic where next state depends on the previous one.
 useReducer() takes reducer function and initial state as arguments and returns the state and dispatch method.
+Note that you can also access previous state in useState hook too.
