@@ -12,7 +12,8 @@ const insultListReducer = (currentState, action) => {
       return [...currentState, action.data];
     case "DELETE":
       return currentState.filter((item, index) => index != action.data);
-    default: throw Error("Wrong action type for reducer")
+    default:
+      throw Error("Wrong action type for reducer");
   }
 };
 
@@ -23,34 +24,37 @@ const Insults = ({ navigation }) => {
 
   const getInsult = () => {
     callRemoteMethod(URL.INSULT_LIST, "GET", apiCallback);
-  }
+  };
 
   const addInsult = () => {
-    setCount((prevState) => prevState + 1);
+    setCount(prevState => prevState + 1);
     setActionType("add");
-  }
+  };
 
-  const deleteInsult = (index) => {
-    dispatch({ type:"DELETE", data: index })
-  }
+  const deleteInsult = index => {
+    dispatch({ type: "DELETE", data: index });
+  };
 
   useEffect(() => {
     getInsult();
-  },[count])
+  }, [count]);
 
   // Function that is called after Insult API is executed
   const apiCallback = res => {
     switch (actionType) {
-      case "set": dispatch({ type: "SET", data: res.insult });
+      case "set":
+        dispatch({ type: "SET", data: res.insult });
         break;
-      case "add": dispatch({ type: "ADD", data: res.insult });
+      case "add":
+        dispatch({ type: "ADD", data: res.insult });
         break;
-      default: throw Error("Wrong option")
+      default:
+        throw Error("Wrong option");
     }
-  };  
+  };
 
   return (
-    <View style={styles.container} >
+    <View style={styles.container}>
       <FlatList
         style={styles.container}
         data={insultList}
@@ -58,7 +62,7 @@ const Insults = ({ navigation }) => {
         renderItem={({ item, index }) => {
           return (
             <View style={styles.cardView}>
-              <Text>{`${ index + 1 }: ${ item }`}</Text>
+              <Text>{`${index + 1}: ${item}`}</Text>
               <TouchableOpacity style={styles.deleteButtonStyle} onPress={() => deleteInsult(index)}>
                 <Text style={styles.buttonText}>{"Delete insult"}</Text>
               </TouchableOpacity>
@@ -69,7 +73,7 @@ const Insults = ({ navigation }) => {
       <TouchableOpacity style={styles.buttonStyle} onPress={() => addInsult()}>
         <Text style={styles.buttonText}>{"Add insult"}</Text>
       </TouchableOpacity>
-      </View>
+    </View>
   );
 };
 
