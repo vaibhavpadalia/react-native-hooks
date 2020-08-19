@@ -2,7 +2,6 @@ import React, { useEffect, useReducer, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet } from "react-native";
 import { callRemoteMethod } from "../utilities/WebServiceHandler";
 import { URL } from "../utilities/Constants";
-import useAsyncState from "../customHooks/useAsyncState";
 
 const insultListReducer = (currentState, action) => {
   switch (action.type) {
