@@ -50,4 +50,4 @@ Note that you can also access previous state in useState hook too.
 <b>Q. What is useContext() ?</b>
 
 A. useContext() provides the same functionality that you would expect from React's Context API.
-It is a simple functional implementation of it.
+It is a simple functional implementation of it. A Context provides both a consumer and a provider. When using the useContext Hook in React, you have to remember to pass in the whole context object, not just the consumer or provider.
