@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, FlatList, StyleSheet } from "react-native";
 import { callRemoteMethod } from "../utilities/WebServiceHandler";
 import { URL } from "../utilities/Constants";
 
