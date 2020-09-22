@@ -2,7 +2,7 @@
  * @description This is a custom hook tha promisifies useState hook so that we can use asyncand await with it
  */
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 function useAsyncState(initialValue) {
     const [value, setValue] = useState(initialValue);
